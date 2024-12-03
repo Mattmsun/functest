@@ -50,7 +50,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    __environment__
     
     steps:
       - name: Download artifact from build job
@@ -69,3 +68,5 @@ jobs:
           slot-name: 'staging'
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C30E9FD18CE047FC891DA9CDA4C52AE0 }}
+          scm-do-build-during-deployment: true
+          enable-oryx-build: true
